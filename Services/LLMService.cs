@@ -14,8 +14,8 @@ public class LLMService
 
 	public LLMService(HttpClient httpClient)
 	{
-			_httpClient = httpClient; 
-    }
+		_httpClient = httpClient;
+	}
 
 	public async Task<LLMResponse> ProcessTextAsync(string input)
 	{
@@ -26,4 +26,5 @@ public class LLMService
 		var responseString = await response.Content.ReadAsStringAsync();
 
 		return new LLMResponse { ProcessedText = responseString };
-    }	
+	}
+}

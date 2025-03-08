@@ -11,7 +11,7 @@ namespace danish_notebook_llm.Controllers;
 // Handles TTS API requests
 [ApiController]
 [Route("api/tts")]
-public class TTSController
+public class TTSController : ControllerBase
 {
 	private readonly TTSService _ttsService;
 

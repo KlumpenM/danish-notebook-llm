@@ -23,7 +23,7 @@ public class TTSService
 	{
 		var requestBody = JsonSerializer.Serialize(new { text });
 
-		var content = new StringContent(requestBody, Encodign.UTF8, "application/json");
+		var content = new StringContent(requestBody, Encoding.UTF8, "application/json");
 
 		var response = await _httpClient.PostAsync(_ttsApiUrl, content);
 		if (!response.IsSuccessStatusCode)
