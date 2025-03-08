@@ -4,7 +4,5 @@ namespace danish_notebook_llm.Models;
 // Request model for TTS
 public class TTSRequest
 {
-	public TTSRequest()
-	{
-	}
+	public string Text { get; set; }
 }

@@ -5,8 +5,5 @@ namespace danish_notebook_llm.Models;
 // Request model for LLM
 public class LLMRequest
 {
-	public LLMRequest
-	{
-		public string InputText { get; set; }
-}
+	public string InputText { get; set; }
 }
