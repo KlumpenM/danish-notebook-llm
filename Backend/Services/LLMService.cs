@@ -10,21 +10,22 @@ namespace danish_notebook_llm.Services;
 public class LLMService
 {
 	private readonly HttpClient _httpClient;
-	private readonly string _llmApiUrl = "http://llm:8000/generate"; // LLM container URL
+	private readonly string _LocalLlmUrl = "http://llm_local:8000/generate"; // LLM container URL
+	private readonly string _externalLlmUrl = "http://llm_external:8100/external-generate"
 
 	public LLMService(HttpClient httpClient)
 	{
 		_httpClient = httpClient;
 	}
 
-	public async Task<LLMResponse> ProcessTextAsync(string input)
+	public async Task<LLMResponse> ProcessTextAsync(string input, bool useExternal = False)
 	{
+		string url = useExternal ? _externalLlmUrl : _LocalLlmUrl;
 		var requestBody = JsonSerializer.Serialize(new { input });
 		var content = new StringContent(requestBody, Encoding.UTF8, "application/json");
 
 		var response = await _httpClient.PostAsync(_llmApiUrl, content);
-		var responseString = await response.Content.ReadAsStringAsync();
+		return await response.Content.ReadAsStringAsync();
 
-		return new LLMResponse { ProcessedText = responseString };
 	}
 }

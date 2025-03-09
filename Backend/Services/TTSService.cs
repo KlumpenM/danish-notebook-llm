@@ -12,7 +12,7 @@ namespace danish_notebook_llm.Services;
 public class TTSService
 {
 	private readonly HttpClient _httpClient;
-	private readonly string _ttsApiUrl = "http://tts:9000/synthesize"; // TTS container URL
+	private readonly string _ttsApiUrl = "http://tts_local:9000/synthesize"; // TTS container URL
 	
 	public TTSService(HttpClient httpClient)
 	{
@@ -22,7 +22,6 @@ public class TTSService
 	public async Task<Byte[]> ConvertTextToSpeechAsync(string text)
 	{
 		var requestBody = JsonSerializer.Serialize(new { text });
-
 		var content = new StringContent(requestBody, Encoding.UTF8, "application/json");
 
 		var response = await _httpClient.PostAsync(_ttsApiUrl, content);

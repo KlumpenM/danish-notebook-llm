@@ -1,9 +1,8 @@
 version: '3.8'
 
 services:
-  # Backend service - Your C# application
   backend:
-    build: ./PodcastAI
+    build: ./Backend
     ports:
       - "5000:5000"
     depends_on:
@@ -13,7 +12,6 @@ services:
       - ASPNETCORE_URLS=http://+:5000
       - ASPNETCORE_ENVIRONMENT=Development
 
-  # Local LLM service
   llm:
     image: my-local-llm
     ports:
@@ -22,7 +20,6 @@ services:
       - ./models:/models
     restart: unless-stopped
 
-  # Text-to-Speech service using Coqui TTS
   tts:
     image: coqui-ai/tts
     ports:
