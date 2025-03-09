@@ -1,6 +1,17 @@
 version: '3.8'
 
 services:
+  frontend:
+    build: ./Frontend
+    ports:
+      - "80:80"
+      - "443:443"
+    environment:
+      - ASPNETCORE_URLS=http://+:80
+      - ASPNETCORE_ENVIRONMENT=Development
+    depends_on:
+      - backend
+
   backend:
     build: ./Backend
     ports:
