@@ -1,6 +1,0 @@
-@danish_notebook_llm_HostAddress = http://localhost:5279
-
-GET {{danish_notebook_llm_HostAddress}}/weatherforecast/
-Accept: application/json
-
-###
